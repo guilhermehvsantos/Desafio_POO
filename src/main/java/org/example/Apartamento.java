@@ -1,22 +1,26 @@
 package org.example;
 
-public class Apartamento extends Imovel{
+public class Apartamento extends Imovel {
 
-    public Apartamento(String endereco, String numero, Double valorAluguel, Proprietario proprietario, int mesesContrato) {
-        super(endereco, numero, valorAluguel, proprietario, mesesContrato);
+    private final int andar;
+    private final int numeroApt;
+
+    public Apartamento(String endereco, String numeroImovel, Double valorAluguel, Proprietario proprietario, Inquilino inquilino, int mesesContrato, int andar, int numeroApt) {
+        super(endereco, numeroImovel, valorAluguel, proprietario, inquilino, mesesContrato);
+        this.andar = andar;
+        this.numeroApt = numeroApt;
     }
 
     @Override
     public String estaAlugado() {
         if(isAlugado()){
-            return "O apartamento de número " + numero + " está alugado";
+            return "O apartamento de número " + numeroApt + " no andar " + andar + " está alugado";
         }
-        return "O apartamento de número " + numero + " está disponivel";
+        return "O apartamento de número " + numeroApt + " no andar " + andar + " está disponível";
     }
-
 
     @Override
     public String toString() {
-        return "Apartamento | Endereço: " + endereco + " | Número: " + numero + " | Valor Aluguel: R$" + valorAluguel + " | " + estaAlugado() + " | " + contatoProprietario();
+        return "Apartamento | Endereço: " + endereco + " | Número: " + numeroImovel + " | Andar: " + andar + " | Apt: " + numeroApt + " | Valor Aluguel: R$" + valorAluguel + " | " + estaAlugado() + " | ";
     }
 }

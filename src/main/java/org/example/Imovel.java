@@ -2,25 +2,24 @@ package org.example;
 
 public abstract class Imovel {
     protected String endereco;
-    protected String numero;
-    protected boolean alugado;
+    protected String numeroImovel;
     protected Double valorAluguel;
     protected int mesesContrato;
     Proprietario proprietario;
+    Inquilino inquilino;
 
-
-    public Imovel(String endereco, String numero, Double valorAluguel, Proprietario proprietario, int mesesContrato) {
+    public Imovel(String endereco, String numeroImovel, Double valorAluguel, Proprietario proprietario, Inquilino inquilino, int mesesContrato) {
         this.endereco = endereco;
-        this.numero = numero;
-        this.alugado = false; // Inicialmente disponivel
+        this.numeroImovel = numeroImovel;
         this.valorAluguel = valorAluguel;
-        this.mesesContrato = mesesContrato;
         this.proprietario = proprietario;
+        this.inquilino = inquilino;
+        this.mesesContrato = mesesContrato;
     }
 
-    //Metodo referente ao atributo
+    //Metodo referente ao antigo atributo alugado - agora baseado no inquilino
     public boolean isAlugado() {
-        return this.alugado;
+        return this.inquilino != null;
     }
 
     //Metodo abstrato para sobrescrever nas subclasses
@@ -52,16 +51,12 @@ public abstract class Imovel {
         this.endereco = endereco;
     }
 
-    public String getNumero() {
-        return numero;
+    public String getNumeroImovel() {
+        return numeroImovel;
     }
 
-    public void setNumero(String numero) {
-        this.numero = numero;
-    }
-
-    public void setAlugado(boolean alugado) {
-        this.alugado = alugado;
+    public void setNumeroImovel(String numeroImovel) {
+        this.numeroImovel = numeroImovel;
     }
 
     public Double getValorAluguel() {
@@ -78,5 +73,21 @@ public abstract class Imovel {
 
     public void setProprietario(Proprietario proprietario) {
         this.proprietario = proprietario;
+    }
+
+    public int getMesesContrato() {
+        return mesesContrato;
+    }
+
+    public void setMesesContrato(int mesesContrato) {
+        this.mesesContrato = mesesContrato;
+    }
+
+    public Inquilino getInquilino() {
+        return inquilino;
+    }
+
+    public void setInquilino(Inquilino inquilino) {
+        this.inquilino = inquilino;
     }
 }
